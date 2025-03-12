@@ -1,9 +1,18 @@
-[gd_scene load_steps=12 format=4 uid="uid://b6oqec2s7owhf"]
+[gd_scene load_steps=19 format=4 uid="uid://b6oqec2s7owhf"]
 
 [ext_resource type="Texture2D" uid="uid://cysly2xdthwlv" path="res://assetes/Seasonal Tilesets/1 - Grassland/Extra_plants (16 x 16).png" id="1_5t1r2"]
+[ext_resource type="Texture2D" uid="uid://dt5fdykoxrwu" path="res://assetes/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="1_sq2yq"]
 [ext_resource type="Texture2D" uid="uid://rigft1o5n4nv" path="res://assetes/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_ubft0"]
+[ext_resource type="Texture2D" uid="uid://dsrfm3w3dwyig" path="res://assetes/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="2_2njp6"]
 [ext_resource type="Texture2D" uid="uid://cphk28vpxljiy" path="res://assetes/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_5t1r2"]
+[ext_resource type="Texture2D" uid="uid://ywyg5hbjwd68" path="res://assetes/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="3_nleli"]
+[ext_resource type="Shader" uid="uid://4sfjqu8v8j0h" path="res://shaders/CloudMov.gdshader" id="3_u620f"]
 [ext_resource type="PackedScene" uid="uid://0048ibgdd24n" path="res://Actors/player.tscn" id="4_sq2yq"]
+[ext_resource type="Texture2D" uid="uid://doo12fht5kncn" path="res://assetes/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="4_u620f"]
+[ext_resource type="Texture2D" uid="uid://c03vly5daopmk" path="res://assetes/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="5_8pdju"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pdju"]
+shader = ExtResource("3_u620f")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6m2xb"]
 texture = ExtResource("1_5t1r2")
@@ -233,6 +242,53 @@ sources/0 = SubResource("TileSetAtlasSource_sq2yq")
 
 [node name="Mundo-1" type="Node2D"]
 
+[node name="BG" type="Node2D" parent="."]
+position = Vector2(0, 15)
+
+[node name="BG 0" type="Parallax2D" parent="BG"]
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/BG 0"]
+position = Vector2(146, -7)
+texture = ExtResource("1_sq2yq")
+
+[node name="BG 1" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/BG 1"]
+position = Vector2(146, -7)
+texture = ExtResource("2_2njp6")
+
+[node name="BG 2" type="Parallax2D" parent="BG"]
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/BG 2"]
+material = SubResource("ShaderMaterial_8pdju")
+position = Vector2(146, -7)
+texture = ExtResource("3_nleli")
+
+[node name="BG 3" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/BG 3"]
+position = Vector2(146, -7)
+texture = ExtResource("4_u620f")
+
+[node name="BG 4" type="Parallax2D" parent="BG"]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/BG 4"]
+position = Vector2(146, -7)
+texture = ExtResource("5_8pdju")
+
 [node name="Layers Mundo" type="Node2D" parent="."]
 
 [node name="Camada-1" type="TileMapLayer" parent="Layers Mundo"]
@@ -244,6 +300,7 @@ tile_map_data = PackedByteArray("AAABAAYAAAAGAAMAAAABAAcAAAAEAAMAAAACAAYAAAAEAAE
 tile_set = SubResource("TileSet_sq2yq")
 
 [node name="Camada-3" type="TileMapLayer" parent="Layers Mundo"]
+z_index = 1
 tile_map_data = PackedByteArray("AAAMAAQAAAAOAAQAAAANAAQAAAAPAAQAAAAOAAQAAAAQAAQAAAAPAAQAAAARAAQAAAAQAAQAAAASAAQAAAAMAAUAAAAOAAUAAAAOAAUAAAAQAAUAAAAQAAUAAAASAAUAAAAMAAYAAAASAAUAAAAMAAcAAAASAAUAAAAOAAYAAAASAAUAAAAOAAcAAAASAAUAAAAQAAYAAAASAAUAAAAQAAcAAAASAAUAAAAMAAgAAAASAAUAAAAOAAgAAAASAAUAAAAQAAgAAAASAAUAAAAMAAkAAAASAAUAAAAOAAkAAAASAAUAAAAQAAkAAAASAAUAAAAMAAoAAAASAAUAAAAOAAoAAAASAAUAAAAQAAoAAAASAAUAAAAMAAsAAAASAAUAAAAOAAsAAAASAAUAAAAQAAsAAAASAAUAAAA=")
 tile_set = SubResource("TileSet_6m2xb")
 
